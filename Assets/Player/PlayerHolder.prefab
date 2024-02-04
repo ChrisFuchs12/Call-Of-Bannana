@@ -6275,6 +6275,7 @@ MonoBehaviour:
   weaponSlot3: {fileID: 7647347618741821755}
   knifeAnim: {fileID: 5099439397642941876}
   gunAnim: {fileID: 1467275979201823186}
+  pistolAnim: {fileID: 7861942655567768487}
 --- !u!1 &2518460282310269762
 GameObject:
   m_ObjectHideFlags: 0

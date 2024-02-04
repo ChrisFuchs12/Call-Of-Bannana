@@ -16,6 +16,7 @@ public class WeaponSwapping : NetworkBehaviour
 
     public Animator knifeAnim;
     public Animator gunAnim;
+    public Animator pistolAnim;
     private float equipTime = 0.5f;
     private bool knifeAnimPlayed = false;
     private bool isEquippingKnife = false;
@@ -23,6 +24,7 @@ public class WeaponSwapping : NetworkBehaviour
     void start(){
         knifeAnim = GetComponent<Animator>();
         gunAnim = GetComponent<Animator>();
+        pistolAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -57,6 +59,9 @@ public class WeaponSwapping : NetworkBehaviour
                 knifeAnimPlayed = true;
             }
         }else if(weapon1Active == false){
+            knifeAnim.CrossFade("New State", 0f);
+            knifeAnim.Update(0f);
+            knifeAnim.Update(0f);
             weaponSlot1.gameObject.SetActive(false);
             knifeAnimPlayed = false;
         }
@@ -64,12 +69,18 @@ public class WeaponSwapping : NetworkBehaviour
         if(weapon2Active == true){
             weaponSlot2.gameObject.SetActive(true);
         }else if(weapon2Active == false){
+            gunAnim.CrossFade("New State", 0f);
+            gunAnim.Update(0f);
+            gunAnim.Update(0f);
             weaponSlot2.gameObject.SetActive(false);
         }
 
         if(weapon3Active == true){
             weaponSlot3.gameObject.SetActive(true);
         }else if(weapon3Active == false){
+            pistolAnim.CrossFade("New State", 0f);
+            pistolAnim.Update(0f);
+            pistolAnim.Update(0f);
             weaponSlot3.gameObject.SetActive(false);
         }
     }
