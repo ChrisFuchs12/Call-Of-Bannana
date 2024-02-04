@@ -30,21 +30,21 @@ public class WeaponSwapping : NetworkBehaviour
     void Update()
     {
         //key inputs
-        if(Input.GetKeyDown("1") && base.IsOwner && GlockScript.isReloading == false && GunAim.isAiming == false){
+        if(Input.GetKeyDown("1") && base.IsOwner && GlockScript.isReloading == false){
             weapon1Active = true;
             weapon2Active = false;
             weapon3Active = false;
         }
 
 
-        if(Input.GetKeyDown("2") && base.IsOwner && GlockScript.isReloading == false && GunAim.isAiming == false){
+        if(Input.GetKeyDown("2") && base.IsOwner && GlockScript.isReloading == false){
             weapon1Active = false;
             weapon2Active = true;
             weapon3Active = false;
         }
 
 
-        if(Input.GetKeyDown("3") && base.IsOwner && GlockScript.isReloading == false && GunAim.isAiming == false){
+        if(Input.GetKeyDown("3") && base.IsOwner && GlockScript.isReloading == false){
             weapon1Active = false;
             weapon2Active = false;
             weapon3Active = true;
