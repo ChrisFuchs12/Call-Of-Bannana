@@ -164,6 +164,9 @@ public class GlockScript : NetworkBehaviour
             //muzzel flash
             muzzelFlash.Play();
 
+            //cam shake
+            CameraShaker.Invoke();
+
             //spawning the bullet
             SpawnObject(objToSpawn, transform, this);
             
