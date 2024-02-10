@@ -7150,6 +7150,9 @@ MonoBehaviour:
   knifeAnim: {fileID: 5099439397642941876}
   gunAnim: {fileID: 1467275979201823186}
   pistolAnim: {fileID: 7861942655567768487}
+  handle: {fileID: 8346724879470081186}
+  weaponSlot2RecoilTing: {fileID: 5779926714285985446}
+  weaponSlot3RecoilTing: {fileID: 8178947957658400156}
 --- !u!1 &2518460282310269762
 GameObject:
   m_ObjectHideFlags: 0
