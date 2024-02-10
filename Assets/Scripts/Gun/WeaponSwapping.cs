@@ -21,7 +21,8 @@ public class WeaponSwapping : NetworkBehaviour
     private bool knifeAnimPlayed = false;
     private bool isEquippingKnife = false;
 
-    public GameObject handle;
+    public GameObject Rhandle;
+    public GameObject Lhandle;
     public GameObject weaponSlot2RecoilTing;
     public GameObject weaponSlot3RecoilTing;
 
@@ -29,7 +30,7 @@ public class WeaponSwapping : NetworkBehaviour
         knifeAnim = GetComponent<Animator>();
         gunAnim = GetComponent<Animator>();
         pistolAnim = GetComponent<Animator>();
-        gameObject.transform.parent = handle.transform;
+        gameObject.transform.parent = Rhandle.transform;
     }
 
     void Update()
@@ -58,7 +59,8 @@ public class WeaponSwapping : NetworkBehaviour
         //responses to key inputs based on true or false values
         if(weapon1Active == true){
             weaponSlot1.gameObject.SetActive(true);
-            handle.transform.parent = weaponSlot1.transform;
+            Rhandle.transform.parent = weaponSlot1.transform;
+            Lhandle.transform.parent = weaponSlot1.transform;
             if(knifeAnimPlayed == false){
                 StartCoroutine(EquipKnife());
                 knifeAnimPlayed = true;
@@ -73,7 +75,8 @@ public class WeaponSwapping : NetworkBehaviour
 
         if(weapon2Active == true){
             weaponSlot2.gameObject.SetActive(true);
-            handle.transform.parent = weaponSlot2RecoilTing.transform;
+            Rhandle.transform.parent = weaponSlot2RecoilTing.transform;
+            Lhandle.transform.parent = weaponSlot2RecoilTing.transform;
             //handle.parent = weaponSlot2;
         }else if(weapon2Active == false){
             gunAnim.CrossFade("New State", 0f);
@@ -84,7 +87,8 @@ public class WeaponSwapping : NetworkBehaviour
 
         if(weapon3Active == true){
             weaponSlot3.gameObject.SetActive(true);
-            handle.transform.parent = weaponSlot3RecoilTing.transform;
+            Rhandle.transform.parent = weaponSlot3RecoilTing.transform;
+            Lhandle.transform.parent = weaponSlot3RecoilTing.transform;
         }else if(weapon3Active == false){
             pistolAnim.CrossFade("New State", 0f);
             pistolAnim.Update(0f);
