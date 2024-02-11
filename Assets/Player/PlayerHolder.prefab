@@ -7882,12 +7882,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 3894994092055675078}
   _networkObjectCache: {fileID: 3894994092055675078}
   walkingSpeed: 10
-  runningSpeed: 13
+  runningSpeed: 15
   jumpSpeed: 8
   gravity: 20
   lookSpeed: 2
   lookXLimit: 45
   canMove: 1
+  amountOfJumps: 2
   cameraYOffset: 0.4
   playerCamera: {fileID: 2351453214553082672}
 --- !u!114 &3306353022598600634

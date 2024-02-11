@@ -21,13 +21,14 @@ public class PlayerController : NetworkBehaviour
  
     [HideInInspector]
     public bool canMove = true;
+
+    public float amountOfJumps = 1;
+
+    private float jumpsRemaining = 1;
  
     [SerializeField]
     private float cameraYOffset = 0.4f;
     public Camera playerCamera;
-
-    //cursor unlocking for inspect xoxo
-    private bool isInspecting = false;
     
     private void Awake()
     {
@@ -82,13 +83,18 @@ public class PlayerController : NetworkBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
  
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetButtonDown("Jump") && canMove && jumpsRemaining >= 2)
         {
             moveDirection.y = jumpSpeed;
+            jumpsRemaining = jumpsRemaining - 1;
         }
         else
         {
             moveDirection.y = movementDirectionY;
+        }
+
+        if (characterController.isGrounded){
+            jumpsRemaining = amountOfJumps;
         }
  
         if (!characterController.isGrounded)
