@@ -7,13 +7,17 @@ public class WeaponSwapping : NetworkBehaviour
 {
     //slot 1 is knifes
     public GameObject weaponSlot1;
+    // 2 is primary
     public GameObject weaponSlot2;
+    //3 is secondary
     public GameObject weaponSlot3;
 
+    //stuff for what is active and what isnt
     private bool weapon1Active = true;
     private bool weapon2Active = false;
     private bool weapon3Active = false;
 
+    //animator stuff
     public Animator knifeAnim;
     public Animator gunAnim;
     public Animator pistolAnim;
@@ -21,8 +25,19 @@ public class WeaponSwapping : NetworkBehaviour
     private bool knifeAnimPlayed = false;
     private bool isEquippingKnife = false;
 
+    //inverse kinematics stuff
     public GameObject Rhandle;
     public GameObject Lhandle;
+
+    public GameObject RhandleAR;
+    public GameObject LhandleAR;
+
+    public float HandMoveSpeed;
+
+    public GameObject RhandleGlock;
+    public GameObject LhandleGlock;
+
+    //recoil
     public GameObject weaponSlot2RecoilTing;
     public GameObject weaponSlot3RecoilTing;
 
@@ -77,6 +92,8 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot2.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot2RecoilTing.transform;
+            Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleAR.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleAR.transform.position, HandMoveSpeed);
             //handle.parent = weaponSlot2;
         }else if(weapon2Active == false){
             gunAnim.CrossFade("New State", 0f);
@@ -89,6 +106,8 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot3.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot3RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot3RecoilTing.transform;
+            Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleGlock.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleGlock.transform.position, HandMoveSpeed);
         }else if(weapon3Active == false){
             pistolAnim.CrossFade("New State", 0f);
             pistolAnim.Update(0f);
