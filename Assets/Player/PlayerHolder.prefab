@@ -7882,7 +7882,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 3894994092055675078}
   _networkObjectCache: {fileID: 3894994092055675078}
   walkingSpeed: 10
-  runningSpeed: 15
+  runningSpeed: 20
   jumpSpeed: 8
   gravity: 20
   lookSpeed: 2
