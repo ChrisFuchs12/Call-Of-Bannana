@@ -41,6 +41,13 @@ public class WeaponSwapping : NetworkBehaviour
     public GameObject weaponSlot2RecoilTing;
     public GameObject weaponSlot3RecoilTing;
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (!base.IsOwner)
+            GetComponent<WeaponSwapping>().enabled = false;
+    }
+
     void start(){
         knifeAnim = GetComponent<Animator>();
         gunAnim = GetComponent<Animator>();
@@ -76,6 +83,7 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot1.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot1.transform;
             Lhandle.transform.parent = weaponSlot1.transform;
+            EquipWeponSlot1();
             if(knifeAnimPlayed == false){
                 StartCoroutine(EquipKnife());
                 knifeAnimPlayed = true;
@@ -88,12 +96,14 @@ public class WeaponSwapping : NetworkBehaviour
             knifeAnimPlayed = false;
         }
 
+
         if(weapon2Active == true){
             weaponSlot2.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleAR.transform.position, HandMoveSpeed);
             Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleAR.transform.position, HandMoveSpeed);
+            EquipWeponSlot2();
             //handle.parent = weaponSlot2;
         }else if(weapon2Active == false){
             gunAnim.CrossFade("New State", 0f);
@@ -102,18 +112,38 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot2.gameObject.SetActive(false);
         }
 
+
         if(weapon3Active == true){
             weaponSlot3.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot3RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot3RecoilTing.transform;
             Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleGlock.transform.position, HandMoveSpeed);
             Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleGlock.transform.position, HandMoveSpeed);
+            EquipWeponSlot3();
         }else if(weapon3Active == false){
             pistolAnim.CrossFade("New State", 0f);
             pistolAnim.Update(0f);
             pistolAnim.Update(0f);
             weaponSlot3.gameObject.SetActive(false);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void EquipWeponSlot2()
+    {
+        weaponSlot2.gameObject.SetActive(true);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void EquipWeponSlot3()
+    {
+        weaponSlot3.gameObject.SetActive(true);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void EquipWeponSlot1()
+    {
+        weaponSlot1.gameObject.SetActive(true);
     }
 
     public IEnumerator EquipKnife(){
