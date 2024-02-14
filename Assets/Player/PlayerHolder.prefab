@@ -7893,6 +7893,7 @@ MonoBehaviour:
   amountOfJumps: 2
   cameraYOffset: 0.4
   playerCamera: {fileID: 2351453214553082672}
+  playerBodyTopHalf: {fileID: 7300119486001130323}
 --- !u!114 &3306353022598600634
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -131,40 +131,87 @@ public class WeaponSwapping : NetworkBehaviour
         }
     }
 
-    //equip
+    //equip server
     [ServerRpc(RequireOwnership = false)]
     void EquipWeponSlot2()
     {
         weaponSlot2.gameObject.SetActive(true);
+        ObserverEquipWeponSlot2();
     }
+
 
     [ServerRpc(RequireOwnership = false)]
     void EquipWeponSlot3()
     {
         weaponSlot3.gameObject.SetActive(true);
+        ObserverEquipWeponSlot3();
     }
 
     [ServerRpc(RequireOwnership = false)]
     void EquipWeponSlot1()
     {
         weaponSlot1.gameObject.SetActive(true);
+        ObserverEquipWeponSlot1();
     }
 
-    //unequip
+    //equip observer
+    
+    [ObserversRpc]
+    void ObserverEquipWeponSlot2()
+    {
+        weaponSlot2.gameObject.SetActive(true);
+    }
+
+
+    [ObserversRpc]
+    void ObserverEquipWeponSlot3()
+    {
+        weaponSlot3.gameObject.SetActive(true);
+    }
+
+    [ObserversRpc]
+    void ObserverEquipWeponSlot1()
+    {
+        weaponSlot1.gameObject.SetActive(true);
+    }
+
+    //unequip server
     [ServerRpc(RequireOwnership = false)]
     void UnEquipWeponSlot2()
     {
         weaponSlot2.gameObject.SetActive(false);
+        ObserverUnEquipWeponSlot2();
     }
 
     [ServerRpc(RequireOwnership = false)]
     void UnEquipWeponSlot3()
     {
         weaponSlot3.gameObject.SetActive(false);
+        ObserverUnEquipWeponSlot3();
     }
 
     [ServerRpc(RequireOwnership = false)]
     void UnEquipWeponSlot1()
+    {
+        weaponSlot1.gameObject.SetActive(false);
+        ObserverUnEquipWeponSlot1();
+    }
+
+    //unequip observer
+    [ObserversRpc]
+    void ObserverUnEquipWeponSlot2()
+    {
+        weaponSlot2.gameObject.SetActive(false);
+    }
+
+    [ObserversRpc]
+    void ObserverUnEquipWeponSlot3()
+    {
+        weaponSlot3.gameObject.SetActive(false);
+    }
+
+    [ObserversRpc]
+    void ObserverUnEquipWeponSlot1()
     {
         weaponSlot1.gameObject.SetActive(false);
     }

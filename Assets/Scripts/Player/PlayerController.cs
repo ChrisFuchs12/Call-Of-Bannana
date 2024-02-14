@@ -29,6 +29,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float cameraYOffset = 0.4f;
     public Camera playerCamera;
+    public GameObject playerBodyTopHalf;
     
     private void Awake()
     {
@@ -112,7 +113,23 @@ public class PlayerController : NetworkBehaviour
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            ServerMoveCam();
         }
 
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void ServerMoveCam()
+    {
+        
+        ObserverMoveCam();
+    }
+
+    //equip observer
+    
+    [ObserversRpc]
+    void ObserverMoveCam()
+    {
+        
     }
 }
