@@ -61,6 +61,9 @@ public class PlayerSpawnObject : NetworkBehaviour
     //inspect and wepon attachments maybe
     static public bool isInspecting = false;
 
+    //aim In
+    public GameObject crosshair;
+
     [HideInInspector] public GameObject spawnedObject;
  
     public override void OnStartClient()
@@ -82,10 +85,6 @@ public class PlayerSpawnObject : NetworkBehaviour
     private void Update()
     {   
 
-        if(isInspecting == true){
-            print("its god dam worked");
-        }
-
         //ammo
         if (ammo >= 1){
             ableToFire = true;
@@ -104,7 +103,10 @@ public class PlayerSpawnObject : NetworkBehaviour
 
         if(Input.GetMouseButton(1)){
             gun.transform.position = gunNormalPoint.transform.position;
+            crosshair.SetActive(false);
             shouldWeRecoil = true;
+        }else{
+            crosshair.SetActive(true);
         }
 
         //fire function
