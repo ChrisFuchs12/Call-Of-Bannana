@@ -121,15 +121,15 @@ public class PlayerController : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     void ServerMoveCam()
     {
-        
-        ObserverMoveCam();
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        //ObserverMoveCam();
     }
 
     //equip observer
     
-    [ObserversRpc]
-    void ObserverMoveCam()
-    {
+    //[ObserversRpc]
+    //void ObserverMoveCam()
+    //{
         
-    }
+    //}
 }
