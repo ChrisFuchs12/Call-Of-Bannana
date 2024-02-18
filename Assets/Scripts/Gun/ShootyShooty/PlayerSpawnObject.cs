@@ -34,6 +34,7 @@ public class PlayerSpawnObject : NetworkBehaviour
     private bool shouldWeRecoil = true;
     public Transform recoilPoint;
     public GameObject gunNormalPoint;
+    [SerializeField, Range(0, 0.1f)] private float recoilSpeed = 0.01f;
 
     //recoil side to side movement
     public float maxNegativeRecoilOnY = -5;

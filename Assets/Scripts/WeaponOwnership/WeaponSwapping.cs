@@ -102,8 +102,8 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot2.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot2RecoilTing.transform;
-            Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleAR.transform.position, HandMoveSpeed);
-            Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleAR.transform.position, HandMoveSpeed);
+            Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleAR.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleAR.transform.position, HandMoveSpeed);
             EquipWeponSlot2();
             //handle.parent = weaponSlot2;
         }else if(weapon2Active == false){
@@ -119,8 +119,8 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot3.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot3RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot3RecoilTing.transform;
-            Lhandle.transform.position = Vector3.MoveTowards(Lhandle.transform.position, LhandleGlock.transform.position, HandMoveSpeed);
-            Rhandle.transform.position = Vector3.MoveTowards(Rhandle.transform.position, RhandleGlock.transform.position, HandMoveSpeed);
+            Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleGlock.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleGlock.transform.position, HandMoveSpeed);
             EquipWeponSlot3();
         }else if(weapon3Active == false){
             pistolAnim.CrossFade("New State", 0f);

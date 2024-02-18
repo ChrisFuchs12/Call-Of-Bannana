@@ -7347,7 +7347,7 @@ MonoBehaviour:
   Lhandle: {fileID: 6354108595781422611}
   RhandleAR: {fileID: 2191608259356056403}
   LhandleAR: {fileID: 2167931326188745947}
-  HandMoveSpeed: 0.1
+  HandMoveSpeed: 0.01
   RhandleGlock: {fileID: 3042387610712548429}
   LhandleGlock: {fileID: 8059506733772304214}
   weaponSlot2RecoilTing: {fileID: 5779926714285985446}
@@ -7965,6 +7965,7 @@ GameObject:
   - component: {fileID: 1087934474951042788}
   - component: {fileID: 9066661851200609905}
   - component: {fileID: 6564158801748783623}
+  - component: {fileID: 925086019347579834}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Untagged
@@ -8156,6 +8157,22 @@ MonoBehaviour:
   _overrideType: 3
   _updateHostVisibility: 1
   _observerConditions: []
+--- !u!114 &925086019347579834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802414838888905609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f2c34ff47a8ec4aa7ade1ef5d4a482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.002
+  freaquency: 10
+  camera: {fileID: 2351453214553082679}
+  camHolder: {fileID: 5485833609892040963}
 --- !u!1 &3924090694348983374
 GameObject:
   m_ObjectHideFlags: 0
