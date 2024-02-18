@@ -20,7 +20,6 @@ public class GlockScript : NetworkBehaviour
     private float BloomY = -90;
     private float currentBloom = 0;
 
-    public GameObject gun;
     private bool firing = false;
 
     //ammo
@@ -42,6 +41,7 @@ public class GlockScript : NetworkBehaviour
 
     static public bool isReloading = false;
 
+    public Recoil recoilScript;
 
     [HideInInspector] public GameObject spawnedObject;
  
@@ -91,7 +91,7 @@ public class GlockScript : NetworkBehaviour
 
 
         //fire function
-        if(Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && ableToFire == true)
+        if(Input.GetMouseButton(0) && Time.time >= nextTimeToFire && ableToFire == true)
         {
             firing = true;
 
@@ -125,7 +125,8 @@ public class GlockScript : NetworkBehaviour
 
             //spawning the bullet
             SpawnObject(objToSpawn, transform, this);
-            RecoilFire();
+            RecoilGo();
+            
             
         }
         if(Input.GetMouseButtonUp(0)){
@@ -160,39 +161,9 @@ public class GlockScript : NetworkBehaviour
         isReloading = false;
     }
 
-
-    private Vector3 currentRotation;
-    private Vector3 targetRotation;
-
-    //hipfire recoil
-    [SerializeField] private float recoilX;
-    [SerializeField] private float recoilY;
-    [SerializeField] private float recoilZ;
-
-    //settings
-    [SerializeField] private float snappiness;
-    [SerializeField] private float returnSpeed;
-
-    //fire Recoil
-    static public bool shouldFireRecoil = false;
-    
-
-    void Start()
-    {
-        
+    public void RecoilGo(){
+        Recoil.shouldFireRecoil = true;
     }
 
-    
-
-    void Update()
-    {
-        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
-        currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
-        transform.localRotation = Quaternion.Euler(currentRotation);}
-    }
-
-    void RecoilFire(){
-        targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), Random.Range(-recoilZ, recoilZ));
-    }
 }
 
