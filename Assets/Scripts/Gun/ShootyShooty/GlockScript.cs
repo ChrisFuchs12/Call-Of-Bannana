@@ -20,26 +20,8 @@ public class GlockScript : NetworkBehaviour
     private float BloomY = -90;
     private float currentBloom = 0;
 
-    //recoil up and down
     public GameObject gun;
-    public float maxRecoilRotationZ = 30;
-    public float recoilRotationZIncreaceAmount = 1;
-    public float recoilRotationZRecoverySpeed = 1;
-    public float maxRecoilRecovery = 0;
-
-    private float currentRecoilRotationZ = 0;
     private bool firing = false;
-
-    //recoil back and forwards pew pew
-    private bool shouldWeRecoil = true;
-    public Transform recoilPoint;
-    public Transform gunNormalPoint;
-
-    //recoil side to side movement
-    public float maxNegativeRecoilOnY = -5;
-    public float maxPositiveRecoilOnY = 5;
-
-    private float currentRecoilY = 0;
 
     //ammo
     public float ammo = 30;
@@ -60,7 +42,8 @@ public class GlockScript : NetworkBehaviour
 
     static public bool isReloading = false;
 
-
+    //recoil
+    private Recoil recoilScript;
 
     [HideInInspector] public GameObject spawnedObject;
  
@@ -76,7 +59,8 @@ public class GlockScript : NetworkBehaviour
     }
 
     void start(){
-    anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        recoilScript = GameObject.FindGameObjectWithTag("Recoil").GetComponent<Recoil>();
     }
 
  
@@ -108,37 +92,16 @@ public class GlockScript : NetworkBehaviour
            StartCoroutine(Reload());
         }
 
-        if(Input.GetMouseButton(1)){
-            shouldWeRecoil = true;
-        }
 
         //fire function
         if(Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && ableToFire == true)
         {
             firing = true;
 
-            //gun recoil move back and forwards pew pew
-            if(shouldWeRecoil == true){
-                gun.transform.position = recoilPoint.position;
-                shouldWeRecoil = false;
-            }else{
-                gun.transform.position = gunNormalPoint.position;
-                shouldWeRecoil = true;
-            }
-
 
             //fire rate
             nextTimeToFire = Time.time + 1f/fireRate;
 
-            //recoil
-            currentRecoilRotationZ = currentRecoilRotationZ + recoilRotationZIncreaceAmount;
-
-            if(currentRecoilRotationZ >= maxRecoilRotationZ){
-                currentRecoilRotationZ = maxRecoilRotationZ;
-                currentRecoilY = Random.Range(maxNegativeRecoilOnY, maxPositiveRecoilOnY);
-            }
-
-            gun.transform.localEulerAngles = new Vector3(0,currentRecoilY,-currentRecoilRotationZ);
 
             //bloom
             if(Input.GetMouseButton(1)){
@@ -154,12 +117,8 @@ public class GlockScript : NetworkBehaviour
             }
 
             bulletSpawnPoint.transform.localEulerAngles = new Vector3(-currentBloom,BloomY,0);
-            //print(currentBloom);
-            //print(BloomY);
 
-            //ammo
             ammo = ammo - 1;
-            //print(ammo);
 
             //muzzel flash
             muzzelFlash.Play();
@@ -169,34 +128,17 @@ public class GlockScript : NetworkBehaviour
 
             //spawning the bullet
             SpawnObject(objToSpawn, transform, this);
+            RecoilCall();
             
         }
         if(Input.GetMouseButtonUp(0)){
             firing = false;
-        }
-
-        if(firing == false){
-
-            //recoil movement back and forth like da pew pew
-            gun.transform.position = gunNormalPoint.position;
-            shouldWeRecoil = true;
-
-            //recoil rotation
-            currentRecoilRotationZ = currentRecoilRotationZ - recoilRotationZRecoverySpeed;
-
-            if(currentRecoilRotationZ <= maxRecoilRecovery){
-                currentRecoilRotationZ = maxRecoilRecovery;
-            }
-
-            gun.transform.localEulerAngles = new Vector3(0,0,-currentRecoilRotationZ);
-
         }
     }
  
     [ServerRpc]
     public void SpawnObject(GameObject obj, Transform player, GlockScript script)
     {
-        
         GameObject spawned = Instantiate(objToSpawn, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         spawned.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
         ServerManager.Spawn(spawned);
@@ -219,6 +161,10 @@ public class GlockScript : NetworkBehaviour
         anim.SetBool("reloading",false);
         ableToFire = true;
         isReloading = false;
+    }
+
+    public void RecoilCall(){
+        recoilScript.RecoilFire();
     }
 
 }

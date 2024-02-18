@@ -7,6 +7,7 @@ TagManager:
   - Teleporter
   - Bullet
   - Floor
+  - Recoil
   layers:
   - Default
   - TransparentFX
