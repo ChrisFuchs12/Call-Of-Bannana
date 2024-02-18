@@ -42,8 +42,6 @@ public class GlockScript : NetworkBehaviour
 
     static public bool isReloading = false;
 
-    //recoil
-    private Recoil recoilScript;
 
     [HideInInspector] public GameObject spawnedObject;
  
@@ -60,7 +58,6 @@ public class GlockScript : NetworkBehaviour
 
     void start(){
         anim = GetComponent<Animator>();
-        recoilScript = GameObject.FindGameObjectWithTag("Recoil").GetComponent<Recoil>();
     }
 
  
@@ -128,7 +125,7 @@ public class GlockScript : NetworkBehaviour
 
             //spawning the bullet
             SpawnObject(objToSpawn, transform, this);
-            RecoilCall();
+            RecoilFire();
             
         }
         if(Input.GetMouseButtonUp(0)){
@@ -163,9 +160,39 @@ public class GlockScript : NetworkBehaviour
         isReloading = false;
     }
 
-    public void RecoilCall(){
-        recoilScript.RecoilFire();
+
+    private Vector3 currentRotation;
+    private Vector3 targetRotation;
+
+    //hipfire recoil
+    [SerializeField] private float recoilX;
+    [SerializeField] private float recoilY;
+    [SerializeField] private float recoilZ;
+
+    //settings
+    [SerializeField] private float snappiness;
+    [SerializeField] private float returnSpeed;
+
+    //fire Recoil
+    static public bool shouldFireRecoil = false;
+    
+
+    void Start()
+    {
+        
     }
 
+    
+
+    void Update()
+    {
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
+        currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
+        transform.localRotation = Quaternion.Euler(currentRotation);}
+    }
+
+    void RecoilFire(){
+        targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), Random.Range(-recoilZ, recoilZ));
+    }
 }
 

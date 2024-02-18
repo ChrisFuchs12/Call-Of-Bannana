@@ -8710,10 +8710,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilX: 0
-  recoilY: 0
-  recoilZ: 0
-  snappiness: 0
+  recoilX: -50
+  recoilY: 20
+  recoilZ: 1.35
+  snappiness: 6
   returnSpeed: 0
 --- !u!1 &4689844995009641524
 GameObject:
@@ -11526,10 +11526,9 @@ MonoBehaviour:
   ammo: 15
   maxAmmo: 15
   reloadTime: 2
-  fireRate: 10
+  fireRate: 7
   muzzelFlash: {fileID: 1947568099978649774}
   anim: {fileID: 7861942655567768487}
-  recoilObj: {fileID: 1672871302636767870}
   spawnedObject: {fileID: 0}
 --- !u!1 &7672404443147328444
 GameObject:
