@@ -12,14 +12,6 @@ public class GlockScript : NetworkBehaviour
     public Transform bulletSpawnPoint;
     public float bulletSpeed = 50;
 
-    //bloom
-    public float bloomIncreaceAmount = 1;
-    public float maxBloom = 5;
-    public float maxNegativeBloomOnY = -85;
-    public float maxPositiveBloomOnY = -95;
-    private float BloomY = -90;
-    private float currentBloom = 0;
-
     private bool firing = false;
 
     //ammo
@@ -27,6 +19,12 @@ public class GlockScript : NetworkBehaviour
     public float maxAmmo = 30;
     public static bool ableToFire;
     public float reloadTime = 1f;
+
+    //recoil back and forwards pew pew
+    private bool shouldWeRecoil = true;
+    public Transform recoilPoint;
+    public Transform gunNormalPoint;
+    public GameObject gun;
 
     //firerate stuff
     public float fireRate = 15f;
@@ -95,25 +93,19 @@ public class GlockScript : NetworkBehaviour
         {
             firing = true;
 
+            //gun recoil move back and forwards pew pew
+            if(shouldWeRecoil == true){
+                gun.transform.position = recoilPoint.position;
+                shouldWeRecoil = false;
+            }else{
+                gun.transform.position = gunNormalPoint.position;
+                shouldWeRecoil = true;
+            }
+
+
 
             //fire rate
             nextTimeToFire = Time.time + 1f/fireRate;
-
-
-            //bloom
-            if(Input.GetMouseButton(1)){
-                currentBloom = 0;
-                BloomY = -90;
-            }
-
-            currentBloom = currentBloom + bloomIncreaceAmount;
-
-            if(currentBloom >= maxBloom){
-                currentBloom = maxBloom;
-                BloomY = Random.Range(maxNegativeBloomOnY, maxPositiveBloomOnY);
-            }
-
-            bulletSpawnPoint.transform.localEulerAngles = new Vector3(-currentBloom,BloomY,0);
 
             ammo = ammo - 1;
 
@@ -131,6 +123,12 @@ public class GlockScript : NetworkBehaviour
         }
         if(Input.GetMouseButtonUp(0)){
             firing = false;
+        }
+
+        if(firing == false){
+            //recoil movement back and forth like da pew pew
+            gun.transform.position = gunNormalPoint.position;
+            shouldWeRecoil = true;
         }
     }
  

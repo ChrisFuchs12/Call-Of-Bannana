@@ -30,15 +30,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226658471921676828}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.2170008, y: 1.607, z: 2.4439993}
-  m_LocalScale: {x: 2.7804978, y: 2.6607761, z: 3.327204}
+  m_LocalPosition: {x: -0.0029991865, y: -0.013000011, z: -0.088000774}
+  m_LocalScale: {x: 2.7804976, y: 2.6607761, z: 3.3272042}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6449424290179864886}
   - {fileID: 8788384799425078474}
   - {fileID: 663361131517434817}
   - {fileID: 2363623650356493188}
-  m_Father: {fileID: 5023275991306327093}
+  m_Father: {fileID: 170764876536727691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &3857328211244279919
@@ -59,20 +59,9 @@ MonoBehaviour:
   objToSpawn: {fileID: 2483930549874958819, guid: c28d81edba70fd846856e4173cd9457f, type: 3}
   bulletSpawnPoint: {fileID: 3095574247398687107}
   bulletSpeed: 75
-  bloomIncreaceAmount: 1
-  maxBloom: 3
-  maxNegativeBloomOnY: -85
-  maxPositiveBloomOnY: -95
   gun: {fileID: 5779926714285985446}
-  maxRecoilRotationZ: 2
-  recoilRotationZIncreaceAmount: 1
-  recoilRotationZRecoverySpeed: 1
-  maxRecoilRecovery: 0
   recoilPoint: {fileID: 8788384799425078474}
   gunNormalPoint: {fileID: 9184841600064982861}
-  recoilSpeed: 0.01
-  maxNegativeRecoilOnY: -2
-  maxPositiveRecoilOnY: 2
   ammo: 30
   maxAmmo: 30
   reloadTime: 1.6
@@ -80,6 +69,7 @@ MonoBehaviour:
   muzzelFlash: {fileID: 9065772781521605998}
   animator: {fileID: 1467275979201823186}
   crosshair: {fileID: 2518460282310269762}
+  recoilScript: {fileID: 1091376777333164371}
   spawnedObject: {fileID: 0}
 --- !u!114 &5902986643376036238
 MonoBehaviour:
@@ -7821,7 +7811,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 607581335632554150}
+  - {fileID: 170764876536727691}
   m_Father: {fileID: 8541454805319761640}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8674,7 +8664,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672871302636767870}
-  - component: {fileID: 745165652923682744}
   m_Layer: 0
   m_Name: Recoil
   m_TagString: Recoil
@@ -8698,24 +8687,6 @@ Transform:
   m_Father: {fileID: 5485833609892040963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &745165652923682744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4586935561883349642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recoilX: -2
-  recoilY: 2
-  recoilZ: 0.35
-  snappiness: 6
-  returnSpeed: 4
-  recoilHolder: {fileID: 5761898977362439332}
 --- !u!1 &4689844995009641524
 GameObject:
   m_ObjectHideFlags: 0
@@ -9770,6 +9741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1882862868953370186}
+  - component: {fileID: 5174746376438766044}
   m_Layer: 0
   m_Name: recoilting
   m_TagString: Untagged
@@ -9793,6 +9765,24 @@ Transform:
   m_Father: {fileID: 2956971311022105375}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5174746376438766044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761898977362439332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilX: -2
+  recoilY: 2
+  recoilZ: 0.25
+  snappiness: 6
+  returnSpeed: 5
+  recoilHolder: {fileID: 5761898977362439332}
 --- !u!1 &5779926714285985446
 GameObject:
   m_ObjectHideFlags: 0
@@ -9834,6 +9824,57 @@ Transform:
   m_Father: {fileID: 607581335632554150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5797551305354600227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170764876536727691}
+  - component: {fileID: 1091376777333164371}
+  m_Layer: 0
+  m_Name: painterRecoilaaaa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &170764876536727691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797551305354600227}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.22, y: 1.62, z: 2.532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 607581335632554150}
+  m_Father: {fileID: 5023275991306327093}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091376777333164371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797551305354600227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilX: -5
+  recoilY: 2
+  recoilZ: 0.35
+  snappiness: 6
+  returnSpeed: 5
+  recoilHolder: {fileID: 5797551305354600227}
 --- !u!1 &5986930160292842518
 GameObject:
   m_ObjectHideFlags: 0
@@ -11551,17 +11592,16 @@ MonoBehaviour:
   objToSpawn: {fileID: 2483930549874958819, guid: c28d81edba70fd846856e4173cd9457f, type: 3}
   bulletSpawnPoint: {fileID: 4063275460495996734}
   bulletSpeed: 75
-  bloomIncreaceAmount: 1
-  maxBloom: 3
-  maxNegativeBloomOnY: -85
-  maxPositiveBloomOnY: -95
   ammo: 15
   maxAmmo: 15
   reloadTime: 2
+  recoilPoint: {fileID: 2218088073283429876}
+  gunNormalPoint: {fileID: 8092259594382255500}
+  gun: {fileID: 8178947957658400156}
   fireRate: 7
   muzzelFlash: {fileID: 1947568099978649774}
   anim: {fileID: 7861942655567768487}
-  recoilScript: {fileID: 745165652923682744}
+  recoilScript: {fileID: 5174746376438766044}
   spawnedObject: {fileID: 0}
 --- !u!1 &7672404443147328444
 GameObject:
