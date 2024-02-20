@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewBobb : MonoBehaviour
+public class WeapomBobb : MonoBehaviour
 {
     [SerializeField, Range(0, 0.1f)] private float amplitude = 0.015f;
     [SerializeField, Range(0, 30)] private float freaquency = 10.0f;
@@ -55,11 +55,5 @@ public class ViewBobb : MonoBehaviour
 
     private void PlayMotion(Vector3 motion){
         camera.localPosition += motion; 
-    }
-
-    private Vector3 FocusTarget(){
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + camera.localPosition.y, transform.position.z);
-        pos += camera.forward * 15.0f;
-        return pos;
     }
 }
