@@ -32,6 +32,9 @@ public class WeaponSwapping : NetworkBehaviour
     public GameObject RhandleAR;
     public GameObject LhandleAR;
 
+    public GameObject RhandleAK47;
+    public GameObject LhandleAK47;
+
     public float HandMoveSpeed;
 
     public GameObject RhandleGlock;
@@ -39,6 +42,7 @@ public class WeaponSwapping : NetworkBehaviour
 
     //recoil
     public GameObject weaponSlot2RecoilTing;
+    public GameObject weaponSlot2RecoilTingAK;
     public GameObject weaponSlot3RecoilTing;
 
     public override void OnStartClient()
@@ -98,14 +102,20 @@ public class WeaponSwapping : NetworkBehaviour
         }
 
 
-        if(weapon2Active == true){
+        if(weapon2Active == true && BuyWeapons.painterMarmoOwned == true){
             weaponSlot2.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.parent = weaponSlot2RecoilTing.transform;
             Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleAR.transform.position, HandMoveSpeed);
             Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleAR.transform.position, HandMoveSpeed);
             EquipWeponSlot2();
-            //handle.parent = weaponSlot2;
+        }else if(weapon2Active == true && BuyWeapons.ak47Owned == true){
+            weaponSlot2.gameObject.SetActive(true);
+            Rhandle.transform.parent = weaponSlot2RecoilTingAK.transform;
+            Lhandle.transform.parent = weaponSlot2RecoilTingAK.transform;
+            Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleAK47.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleAK47.transform.position, HandMoveSpeed);
+            EquipWeponSlot2();
         }else if(weapon2Active == false){
             gunAnim.CrossFade("New State", 0f);
             gunAnim.Update(0f);

@@ -25,7 +25,12 @@ public class ViewBobb : MonoBehaviour
     {
         CheckMotion();
         ResetPosition();
-        camera.LookAt(FocusTarget());
+
+        if(Input.GetKey(KeyCode.LeftShift)){
+            freaquency = 15.0f;
+        }else{
+            freaquency = 10.0f;
+        }    
     }
 
     private void CheckMotion(){
@@ -54,8 +59,8 @@ public class ViewBobb : MonoBehaviour
     }
 
     private Vector3 FocusTarget(){
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + camHolder.localPosition.y, transform.position.z);
-        pos += camHolder.forward * 15.0f;
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + camera.localPosition.y, transform.position.z);
+        pos += camera.forward * 15.0f;
         return pos;
     }
 }

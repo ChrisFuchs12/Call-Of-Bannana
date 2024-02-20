@@ -32,9 +32,6 @@ public class Recoil : MonoBehaviour
             RecoilFire();
             shouldFireRecoil = false;
         }
-
-        print(currentRotation);
-        print(recoilHolder.transform.localRotation);
     }
 
     public void RecoilFire(){

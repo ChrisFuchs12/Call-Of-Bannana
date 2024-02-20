@@ -25,6 +25,7 @@ public class GlockScript : NetworkBehaviour
     public Transform recoilPoint;
     public Transform gunNormalPoint;
     public GameObject gun;
+    public float recoilBackAndForthSpeed;
 
     //firerate stuff
     public float fireRate = 15f;
@@ -89,20 +90,12 @@ public class GlockScript : NetworkBehaviour
 
 
         //fire function
-        if(Input.GetMouseButton(0) && Time.time >= nextTimeToFire && ableToFire == true)
+        if(Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && ableToFire == true)
         {
             firing = true;
 
-            //gun recoil move back and forwards pew pew
-            if(shouldWeRecoil == true){
-                gun.transform.position = recoilPoint.position;
-                shouldWeRecoil = false;
-            }else{
-                gun.transform.position = gunNormalPoint.position;
-                shouldWeRecoil = true;
-            }
-
-
+            //does what the name says
+            RecoilBackAndForthPewPew();
 
             //fire rate
             nextTimeToFire = Time.time + 1f/fireRate;
@@ -125,11 +118,7 @@ public class GlockScript : NetworkBehaviour
             firing = false;
         }
 
-        if(firing == false){
-            //recoil movement back and forth like da pew pew
-            gun.transform.position = gunNormalPoint.position;
-            shouldWeRecoil = true;
-        }
+        RecoilRecoveryOrSmthnSMH();
     }
  
     [ServerRpc]
@@ -163,5 +152,23 @@ public class GlockScript : NetworkBehaviour
         Recoil.shouldFireRecoil = true;
     }
 
+    public void RecoilBackAndForthPewPew(){
+        //pew pew
+        if(shouldWeRecoil == true){
+            gun.transform.position = Vector3.MoveTowards(gun.transform.position, recoilPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
+            shouldWeRecoil = false;
+        }else{
+            gun.transform.position = Vector3.MoveTowards(gun.transform.position, gunNormalPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
+            shouldWeRecoil = true;
+        }
+    }
+
+    public void RecoilRecoveryOrSmthnSMH(){
+        if(firing == false){
+            //recoil movement back and forth like da pew pew
+            gun.transform.position = Vector3.MoveTowards(gun.transform.position, gunNormalPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
+            shouldWeRecoil = true;
+        }
+    }
 }
 
