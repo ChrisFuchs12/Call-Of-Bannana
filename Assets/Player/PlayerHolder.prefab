@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 162943257645852156}
   - component: {fileID: 6467612418608404268}
   - component: {fileID: 7052882146592624427}
+  - component: {fileID: 5322816367630893399}
   m_Layer: 0
   m_Name: AKM
   m_TagString: Untagged
@@ -301,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651109530514947910}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.0010000467, y: -0.083000064, z: -0.11100006}
+  m_LocalPosition: {x: -0.001000047, y: -0.08300006, z: -0.1110001}
   m_LocalScale: {x: 1.2298, y: 1.2298, z: 1.2298}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -334,7 +335,7 @@ MonoBehaviour:
   gunNormalPoint: {fileID: 4766338456048621043}
   ammo: 30
   maxAmmo: 30
-  reloadTime: 1
+  reloadTime: 1.5
   fireRate: 6
   muzzelFlash: {fileID: 6904291512019126421}
   animator: {fileID: 7052882146592624427}
@@ -351,7 +352,7 @@ Animator:
   m_GameObject: {fileID: 651109530514947910}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15a6d4ee992eca54d9048a21767d3a50, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -362,6 +363,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5322816367630893399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651109530514947910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849dbfaba22296f449decd18efcf47c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 1395613634624782381}
+  _networkObjectCache: {fileID: 1395613634624782381}
 --- !u!1 &768193871760405099
 GameObject:
   m_ObjectHideFlags: 0
@@ -12342,6 +12358,7 @@ MonoBehaviour:
   knifeAnim: {fileID: 5099439397642941876}
   gunAnim: {fileID: 1467275979201823186}
   pistolAnim: {fileID: 7861942655567768487}
+  akAnim: {fileID: 7052882146592624427}
   Rhandle: {fileID: 8346724879470081186}
   Lhandle: {fileID: 6354108595781422611}
   RhandleAR: {fileID: 2191608259356056403}
@@ -16904,7 +16921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849dbfaba22296f449decd18efcf47c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 1395613634624782381}
   _networkObjectCache: {fileID: 1395613634624782381}
 --- !u!114 &1054097138188296983
@@ -16919,7 +16936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 1395613634624782381}
   _networkObjectCache: {fileID: 1395613634624782381}
   IgnoredParameters: []
@@ -16940,7 +16957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 1395613634624782381}
   _networkObjectCache: {fileID: 1395613634624782381}
   _componentConfiguration: 0
@@ -16985,7 +17002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67febc54b588bdb49b1f19b457f90ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 1395613634624782381}
   _networkObjectCache: {fileID: 1395613634624782381}
   objToSpawn: {fileID: 2483930549874958819, guid: c28d81edba70fd846856e4173cd9457f, type: 3}
@@ -23927,6 +23944,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 6736759679806280130}
   - {fileID: 6467612418608404268}
+  - {fileID: 5322816367630893399}
   - {fileID: 5676953838777782085}
   - {fileID: 1054097138188296983}
   - {fileID: 3063779468950997178}

@@ -21,6 +21,7 @@ public class WeaponSwapping : NetworkBehaviour
     public Animator knifeAnim;
     public Animator gunAnim;
     public Animator pistolAnim;
+    public Animator akAnim;
     private float equipTime = 0.5f;
     private bool knifeAnimPlayed = false;
     private bool isEquippingKnife = false;
@@ -54,6 +55,7 @@ public class WeaponSwapping : NetworkBehaviour
 
     void start(){
         knifeAnim = GetComponent<Animator>();
+        akAnim = GetComponent<Animator>();
         gunAnim = GetComponent<Animator>();
         pistolAnim = GetComponent<Animator>();
         gameObject.transform.parent = Rhandle.transform;
@@ -120,6 +122,9 @@ public class WeaponSwapping : NetworkBehaviour
             gunAnim.CrossFade("New State", 0f);
             gunAnim.Update(0f);
             gunAnim.Update(0f);
+            akAnim.CrossFade("New State", 0f);
+            akAnim.Update(0f);
+            akAnim.Update(0f);
             weaponSlot2.gameObject.SetActive(false);
             UnEquipWeponSlot2();
         }
