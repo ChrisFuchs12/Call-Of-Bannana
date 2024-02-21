@@ -7,12 +7,14 @@ public class BulletHitGround : MonoBehaviour
 
     public GameObject bullet;
     public ParticleSystem hitGroundEffect;
+    public GameObject bulletHolePrefab;
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collision)
     {
-        if (other.gameObject.tag == "Floor")
+        if (collision.gameObject.tag == "Floor")
         {
         hitGroundEffect.Play();
+        GameObject obj = Instantiate(bulletHolePrefab, transform.position, transform.rotation);
         }
     }
 
