@@ -335,7 +335,7 @@ MonoBehaviour:
   gunNormalPoint: {fileID: 4766338456048621043}
   ammo: 30
   maxAmmo: 30
-  reloadTime: 1.5
+  reloadTime: 1
   fireRate: 6
   muzzelFlash: {fileID: 6904291512019126421}
   animator: {fileID: 7052882146592624427}
@@ -808,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000214637951669106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 0, z: -0}
+  m_LocalPosition: {x: 1.38, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14996,7 +14996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilX: -2
+  recoilX: -3
   recoilY: 2
   recoilZ: 0.25
   snappiness: 6
