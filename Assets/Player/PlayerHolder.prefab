@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &200995136291732520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7417820408612662087}
+  m_Layer: 0
+  m_Name: rightGripBali
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7417820408612662087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200995136291732520}
+  m_LocalRotation: {x: 0.000000029802322, y: 0.3184911, z: -0, w: 0.9479259}
+  m_LocalPosition: {x: -1.33, y: 1.65, z: 0.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 512147073898911246}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 37.143, z: 0}
 --- !u!1 &226658471921676828
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +690,8 @@ Transform:
   - {fileID: 8031720097797943227}
   - {fileID: 2861550449799951464}
   - {fileID: 8495235375014653408}
+  - {fileID: 3465923067980812601}
+  - {fileID: 7417820408612662087}
   m_Father: {fileID: 7379970579943242353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.386, y: -90, z: 90}
@@ -13207,9 +13240,11 @@ MonoBehaviour:
   LhandleAR: {fileID: 2167931326188745947}
   RhandleAK47: {fileID: 2549015731229581456}
   LhandleAK47: {fileID: 5002316227457734312}
-  HandMoveSpeed: 0.01
+  RhandleBali: {fileID: 200995136291732520}
+  LhandleBali: {fileID: 6600385845615824345}
   RhandleGlock: {fileID: 3042387610712548429}
   LhandleGlock: {fileID: 8059506733772304214}
+  HandMoveSpeed: 0.2
   weaponSlot2RecoilTing: {fileID: 5779926714285985446}
   weaponSlot2RecoilTingAK: {fileID: 785567918997656534}
   weaponSlot3RecoilTing: {fileID: 8178947957658400156}
@@ -17450,6 +17485,37 @@ Transform:
   m_Father: {fileID: 4263993647745384599}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6600385845615824345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3465923067980812601}
+  m_Layer: 0
+  m_Name: leftGripBali
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3465923067980812601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600385845615824345}
+  m_LocalRotation: {x: -0.000000014901161, y: 0.27763057, z: 0.000000059604645, w: 0.960688}
+  m_LocalPosition: {x: 0.64, y: 0, z: 2.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 512147073898911246}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 32.238, z: 0}
 --- !u!1 &6667717370236208709
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,10 +36,13 @@ public class WeaponSwapping : NetworkBehaviour
     public GameObject RhandleAK47;
     public GameObject LhandleAK47;
 
-    public float HandMoveSpeed;
+    public GameObject RhandleBali;
+    public GameObject LhandleBali;
 
     public GameObject RhandleGlock;
     public GameObject LhandleGlock;
+
+    public float HandMoveSpeed;
 
     //recoil
     public GameObject weaponSlot2RecoilTing;
@@ -89,6 +92,8 @@ public class WeaponSwapping : NetworkBehaviour
             weaponSlot1.gameObject.SetActive(true);
             Rhandle.transform.parent = weaponSlot1.transform;
             Lhandle.transform.parent = weaponSlot1.transform;
+            Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleBali.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleBali.transform.position, HandMoveSpeed);
             EquipWeponSlot1();
             if(knifeAnimPlayed == false){
                 StartCoroutine(EquipKnife());
