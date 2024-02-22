@@ -21,6 +21,8 @@ public class Ak47Script : NetworkBehaviour
     private bool shouldWeRecoil = true;
     public Transform recoilPoint;
     public GameObject gunNormalPoint;
+    public float recoilSpeed;
+    private bool recoilOn = false;
 
     private float currentRecoilY = 0;
 
@@ -88,7 +90,7 @@ public class Ak47Script : NetworkBehaviour
         }
 
         if(Input.GetMouseButton(1)){
-            gun.transform.position = gunNormalPoint.transform.position;
+            //gun.transform.position = gunNormalPoint.transform.position;
             crosshair.SetActive(false);
             shouldWeRecoil = true;
         }else{
@@ -100,14 +102,8 @@ public class Ak47Script : NetworkBehaviour
         {
             firing = true;
 
-            //gun recoil move back and forwards pew pew
-            if(shouldWeRecoil == true){
-                gun.transform.position = recoilPoint.position;
-                shouldWeRecoil = false;
-            }else{
-                gun.transform.position = gunNormalPoint.transform.position;
-                shouldWeRecoil = true;
-            }
+            recoilOn = true;
+            StartCoroutine(RecoilToRecoil());
 
             //fire rate
             nextTimeToFire = Time.time + 1f/fireRate;
@@ -132,7 +128,7 @@ public class Ak47Script : NetworkBehaviour
         if(firing == false){
 
             //recoil movement back and forth like da pew pew
-            gun.transform.position = gunNormalPoint.transform.position;
+            //gun.transform.position = gunNormalPoint.transform.position;
             shouldWeRecoil = true;
 
         }
@@ -166,5 +162,31 @@ public class Ak47Script : NetworkBehaviour
 
     public void RecoilGo(){
         Recoil.shouldFireRecoil = true;
+    }
+
+    private IEnumerator RecoilToRecoil()
+    {
+        print("aaa");
+        while (recoilOn == true)
+        {
+            float distance = Vector3.Distance(gunNormalPoint.transform.position, recoilPoint.transform.position);
+            float remainingDistance = distance;
+            while (remainingDistance > 0)
+            {
+                gun.transform.position = Vector3.Lerp(gunNormalPoint.transform.position, recoilPoint.transform.position, 1 - (remainingDistance / distance));
+                remainingDistance -= recoilSpeed * Time.deltaTime;
+                yield return null;
+            }
+
+            remainingDistance = distance;
+            while (remainingDistance > 0)
+            {
+                gun.transform.position = Vector3.Lerp(gunNormalPoint.transform.position, recoilPoint.transform.position, remainingDistance / distance);
+                remainingDistance -= recoilSpeed * Time.deltaTime;
+                recoilOn = false;
+                yield return null;
+            }
+     
+        }
     }
 }

@@ -364,6 +364,7 @@ MonoBehaviour:
   gun: {fileID: 785567918997656534}
   recoilPoint: {fileID: 5827865911369679975}
   gunNormalPoint: {fileID: 4766338456048621043}
+  recoilSpeed: 1
   ammo: 30
   maxAmmo: 30
   reloadTime: 1
