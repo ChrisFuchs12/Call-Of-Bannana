@@ -123,8 +123,7 @@ public class Ak47Script : NetworkBehaviour
 
             //spawning the bullet
             SpawnObject(objToSpawn, transform, this);
-            RecoilGo();
-            
+            RecoilGo();   
         }
         if(Input.GetMouseButtonUp(0)){
             firing = false;

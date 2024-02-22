@@ -5,6 +5,11 @@ using UnityEngine;
 public class BuyWeapons : MonoBehaviour
 {
     //bools
+    public bool Powned = false;
+    public bool Gowned = true;
+    public bool AKowned = true;
+
+    //static stuff
     public static bool painterMarmoOwned = false;
     public static bool glockOwned = true;
     public static bool ak47Owned = true;
@@ -23,6 +28,12 @@ public class BuyWeapons : MonoBehaviour
     
     void Update()
     {
+        // stuff for testing delete before releace
+        painterMarmoOwned = Powned;
+        glockOwned = Gowned;
+        ak47Owned = AKowned;
+        
+
         if(painterMarmoOwned == true){
             painterMarmo.SetActive(true);
         }else{
