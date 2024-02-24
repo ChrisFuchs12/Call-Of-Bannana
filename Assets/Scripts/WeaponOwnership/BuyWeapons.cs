@@ -8,16 +8,19 @@ public class BuyWeapons : MonoBehaviour
     public bool Powned = false;
     public bool Gowned = true;
     public bool AKowned = true;
+    public bool HKowned = false;
 
     //static stuff
     public static bool painterMarmoOwned = false;
     public static bool glockOwned = true;
     public static bool ak47Owned = true;
+    public static bool HK416Owned = false;
 
     //game objects
     public GameObject painterMarmo;
     public GameObject glock;
     public GameObject ak47;
+    public GameObject HK416;
 
     
     void Start()
@@ -32,6 +35,7 @@ public class BuyWeapons : MonoBehaviour
         painterMarmoOwned = Powned;
         glockOwned = Gowned;
         ak47Owned = AKowned;
+        HK416Owned = HKowned;
         
 
         if(painterMarmoOwned == true){
@@ -50,6 +54,12 @@ public class BuyWeapons : MonoBehaviour
             ak47.SetActive(true);
         }else{
             ak47.SetActive(false);
+        }
+
+        if(HK416Owned == true){
+            HK416.SetActive(true);
+        }else{
+            HK416.SetActive(false);
         }
 
     }

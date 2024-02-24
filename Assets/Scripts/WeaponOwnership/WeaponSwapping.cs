@@ -22,6 +22,7 @@ public class WeaponSwapping : NetworkBehaviour
     public Animator gunAnim;
     public Animator pistolAnim;
     public Animator akAnim;
+    public Animator hkAnim;
     private float equipTime = 0.5f;
     private bool knifeAnimPlayed = false;
     private bool isEquippingKnife = false;
@@ -36,6 +37,9 @@ public class WeaponSwapping : NetworkBehaviour
     public GameObject RhandleAK47;
     public GameObject LhandleAK47;
 
+    public GameObject Rhandlehk416;
+    public GameObject Lhandlehk416;
+
     public GameObject RhandleBali;
     public GameObject LhandleBali;
 
@@ -47,6 +51,7 @@ public class WeaponSwapping : NetworkBehaviour
     //recoil
     public GameObject weaponSlot2RecoilTing;
     public GameObject weaponSlot2RecoilTingAK;
+    public GameObject weaponSlot2RecoilTingHK416;
     public GameObject weaponSlot3RecoilTing;
 
     public override void OnStartClient()
@@ -59,6 +64,7 @@ public class WeaponSwapping : NetworkBehaviour
     void start(){
         knifeAnim = GetComponent<Animator>();
         akAnim = GetComponent<Animator>();
+        hkAnim = GetComponent<Animator>();
         gunAnim = GetComponent<Animator>();
         pistolAnim = GetComponent<Animator>();
         gameObject.transform.parent = Rhandle.transform;
@@ -122,6 +128,14 @@ public class WeaponSwapping : NetworkBehaviour
             Lhandle.transform.parent = weaponSlot2RecoilTingAK.transform;
             Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, LhandleAK47.transform.position, HandMoveSpeed);
             Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, RhandleAK47.transform.position, HandMoveSpeed);
+            EquipWeponSlot2();
+        }else if(weapon2Active == true && BuyWeapons.HK416Owned == true){
+            weaponSlot2.gameObject.SetActive(true);
+            weaponSlot2.gameObject.SetActive(true);
+            Rhandle.transform.parent = weaponSlot2RecoilTingHK416.transform;
+            Lhandle.transform.parent = weaponSlot2RecoilTingHK416.transform;
+            Lhandle.transform.position = Vector3.Lerp(Lhandle.transform.position, Lhandlehk416.transform.position, HandMoveSpeed);
+            Rhandle.transform.position = Vector3.Lerp(Rhandle.transform.position, Rhandlehk416.transform.position, HandMoveSpeed);
             EquipWeponSlot2();
         }else if(weapon2Active == false){
             gunAnim.CrossFade("New State", 0f);
