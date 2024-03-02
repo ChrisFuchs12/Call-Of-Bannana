@@ -5035,7 +5035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2483930549874958819}
   hitGroundEffect: {fileID: 1869961067875886925}
-  bulletHolePrefab: {fileID: 357951814731983479, guid: 80cd63505fd95b34eb29e2dac4060d71, type: 3}
+  bulletHolePrefab: {fileID: 9209649899088742413, guid: 9abad2c0cd7d7e04e887e7b38e70a41e, type: 3}
 --- !u!1 &3624039319053207191
 GameObject:
   m_ObjectHideFlags: 0

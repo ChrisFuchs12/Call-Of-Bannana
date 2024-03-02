@@ -15,6 +15,7 @@ public class BulletHitGround : MonoBehaviour
         {
         hitGroundEffect.Play();
         GameObject obj = Instantiate(bulletHolePrefab, transform.position, transform.rotation);
+        
         }
     }
 
