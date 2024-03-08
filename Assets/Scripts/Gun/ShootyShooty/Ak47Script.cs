@@ -126,9 +126,6 @@ public class Ak47Script : NetworkBehaviour
         }
 
         if(firing == false){
-
-            //recoil movement back and forth like da pew pew
-            //gun.transform.position = gunNormalPoint.transform.position;
             shouldWeRecoil = true;
 
         }
