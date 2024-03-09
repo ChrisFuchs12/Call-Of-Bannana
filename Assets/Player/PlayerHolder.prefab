@@ -18611,7 +18611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f2c34ff47a8ec4aa7ade1ef5d4a482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.002
+  amplitude: 0.0002
   freaquency: 10
   camera: {fileID: 2351453214553082679}
 --- !u!114 &6247533573677064454
@@ -18626,7 +18626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59395a9747b462242aabdf38245dd894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.003
+  amplitude: 0.0002
   freaquency: 10
   camera: {fileID: 8541454805319761640}
 --- !u!1 &3924090694348983374
