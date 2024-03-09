@@ -89,7 +89,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 4713387125650044933}
   objToSpawn: {fileID: 2483930549874958819, guid: c28d81edba70fd846856e4173cd9457f, type: 3}
   bulletSpawnPoint: {fileID: 3095574247398687107}
-  bulletSpeed: 75
+  bulletSpeed: 50
   gun: {fileID: 5779926714285985446}
   recoilPoint: {fileID: 8788384799425078474}
   gunNormalPoint: {fileID: 9184841600064982861}
@@ -817,7 +817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000214637951669106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 0, z: -0}
+  m_LocalPosition: {x: 1.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17538,10 +17538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22c5cbee18a8084e946c48be87da949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Powned: 1
+  Powned: 0
   Gowned: 1
   AKowned: 0
-  HKowned: 0
+  HKowned: 1
   painterMarmo: {fileID: 5797551305354600227}
   glock: {fileID: 5761898977362439332}
   ak47: {fileID: 4481599557955889798}
@@ -18626,7 +18626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59395a9747b462242aabdf38245dd894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.0002
+  amplitude: 0.003
   freaquency: 10
   camera: {fileID: 8541454805319761640}
 --- !u!1 &3924090694348983374
@@ -20231,11 +20231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498b0be42ba22a4bbb47617e1c5e5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilX: -3
+  recoilX: -10
   recoilY: 2
   recoilZ: 0.25
   snappiness: 6
-  returnSpeed: 5
+  returnSpeed: 7
   recoilHolder: {fileID: 5761898977362439332}
 --- !u!1 &5767930289760617139
 GameObject:
@@ -22514,6 +22514,7 @@ MonoBehaviour:
   muzzelFlash: {fileID: 1947568099978649774}
   anim: {fileID: 7861942655567768487}
   recoilScript: {fileID: 5174746376438766044}
+  recoilSpeed: 1
   spawnedObject: {fileID: 0}
 --- !u!1 &7672404443147328444
 GameObject:
@@ -23394,7 +23395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa344868f4c5b5e48b25c928a0053949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2351453214553082679}
+  _camera: {fileID: 1672871302636767870}
   _positionStrength: {x: 0.1, y: 0.1, z: 0.1}
   _rotationStrength: {x: 0, y: 0, z: 0}
 --- !u!95 &1448563380623726174

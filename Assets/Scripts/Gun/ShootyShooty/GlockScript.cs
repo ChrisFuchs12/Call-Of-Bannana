@@ -41,6 +41,8 @@ public class GlockScript : NetworkBehaviour
     static public bool isReloading = false;
 
     public Recoil recoilScript;
+    public float recoilSpeed = 0;
+    private bool recoilOn;
 
     [HideInInspector] public GameObject spawnedObject;
  
@@ -95,7 +97,8 @@ public class GlockScript : NetworkBehaviour
             firing = true;
 
             //does what the name says
-            RecoilBackAndForthPewPew();
+            recoilOn = true;
+            StartCoroutine(RecoilToRecoil());
 
             //fire rate
             nextTimeToFire = Time.time + 1f/fireRate;
@@ -117,8 +120,6 @@ public class GlockScript : NetworkBehaviour
         if(Input.GetMouseButtonUp(0)){
             firing = false;
         }
-
-        RecoilRecoveryOrSmthnSMH();
     }
  
     [ServerRpc]
@@ -152,22 +153,29 @@ public class GlockScript : NetworkBehaviour
         Recoil.shouldFireRecoil = true;
     }
 
-    public void RecoilBackAndForthPewPew(){
-        //pew pew
-        if(shouldWeRecoil == true){
-            gun.transform.position = Vector3.MoveTowards(gun.transform.position, recoilPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
-            shouldWeRecoil = false;
-        }else{
-            gun.transform.position = Vector3.MoveTowards(gun.transform.position, gunNormalPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
-            shouldWeRecoil = true;
-        }
-    }
+    private IEnumerator RecoilToRecoil()
+    {
+        print("aaa");
+        while (recoilOn == true)
+        {
+            float distance = Vector3.Distance(gunNormalPoint.transform.position, recoilPoint.transform.position);
+            float remainingDistance = distance;
+            while (remainingDistance > 0)
+            {
+                gun.transform.position = Vector3.Lerp(gunNormalPoint.transform.position, recoilPoint.transform.position, 1 - (remainingDistance / distance));
+                remainingDistance -= recoilSpeed * Time.deltaTime;
+                yield return null;
+            }
 
-    public void RecoilRecoveryOrSmthnSMH(){
-        if(firing == false){
-            //recoil movement back and forth like da pew pew
-            gun.transform.position = Vector3.MoveTowards(gun.transform.position, gunNormalPoint.position, recoilBackAndForthSpeed * Time.deltaTime);
-            shouldWeRecoil = true;
+            remainingDistance = distance;
+            while (remainingDistance > 0)
+            {
+                gun.transform.position = Vector3.Lerp(gunNormalPoint.transform.position, recoilPoint.transform.position, remainingDistance / distance);
+                remainingDistance -= recoilSpeed * Time.deltaTime;
+                recoilOn = false;
+                yield return null;
+            }
+     
         }
     }
 }
