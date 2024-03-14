@@ -17469,6 +17469,7 @@ Transform:
   - {fileID: 7379970579943242353}
   - {fileID: 5023275991306327093}
   - {fileID: 2956971311022105375}
+  - {fileID: 4035103393091179997}
   m_Father: {fileID: 1528862232632938141}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18408,6 +18409,7 @@ GameObject:
   - component: {fileID: 6564158801748783623}
   - component: {fileID: 925086019347579834}
   - component: {fileID: 6247533573677064454}
+  - component: {fileID: 2210748780556189395}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Untagged
@@ -18454,6 +18456,7 @@ MonoBehaviour:
   - {fileID: 2338491948054947762}
   - {fileID: 3306353022598600634}
   - {fileID: 9066661851200609905}
+  - {fileID: 2210748780556189395}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField:
   - {fileID: 4550557121563325969}
@@ -18629,6 +18632,29 @@ MonoBehaviour:
   amplitude: 0.0002
   freaquency: 10
   camera: {fileID: 8541454805319761640}
+--- !u!114 &2210748780556189395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802414838888905609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f3dab0f4998484ab5103ccfb0e5812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 3894994092055675078}
+  _networkObjectCache: {fileID: 3894994092055675078}
+  raycastDistance: 2
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  pickupPosition: {fileID: 4035103393091179997}
+  pickupButton: 101
+  dropButton: 113
+  cam: {fileID: 2351453214553082672}
 --- !u!1 &3924090694348983374
 GameObject:
   m_ObjectHideFlags: 0
@@ -20482,6 +20508,37 @@ MonoBehaviour:
   snappiness: 6
   returnSpeed: 5
   recoilHolder: {fileID: 5797551305354600227}
+--- !u!1 &5850471335685510507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4035103393091179997}
+  m_Layer: 0
+  m_Name: PickupPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4035103393091179997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850471335685510507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.039, y: -0.116, z: 0.775}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8541454805319761640}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5859513351832691041
 GameObject:
   m_ObjectHideFlags: 0
