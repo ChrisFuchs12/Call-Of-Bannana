@@ -18586,7 +18586,7 @@ MonoBehaviour:
   DethScreen: {fileID: 8196565720653635825}
   DeadBody: {fileID: 3002857067573004530}
   AlivePlayerGun: {fileID: 2477111097554070049}
-  AlivePlayerBody: {fileID: 275908445845418126}
+  AlivePlayerBody: {fileID: 7560597403892506660}
 --- !u!114 &6564158801748783623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29661,7 +29661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2313834418732344114, guid: a16f146837b72eb4d888dc4c2e0d3dec, type: 3}
       propertyPath: m_text
-      value: SQUASHED
+      value: WASTED
       objectReference: {fileID: 0}
     - target: {fileID: 2313834418732344114, guid: a16f146837b72eb4d888dc4c2e0d3dec, type: 3}
       propertyPath: m_fontSize
