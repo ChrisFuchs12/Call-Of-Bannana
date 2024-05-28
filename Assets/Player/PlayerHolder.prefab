@@ -17541,8 +17541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Powned: 0
   Gowned: 1
-  AKowned: 0
-  HKowned: 1
+  AKowned: 1
+  HKowned: 0
   painterMarmo: {fileID: 5797551305354600227}
   glock: {fileID: 5761898977362439332}
   ak47: {fileID: 4481599557955889798}
