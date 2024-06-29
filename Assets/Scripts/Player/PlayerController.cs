@@ -70,6 +70,13 @@ public class PlayerController : NetworkBehaviour
  
     void Update()
     {
+
+        if(PlayerDamageDetector.health <= 0){
+            walkingSpeed = 0f;
+            runningSpeed = 0f;
+            jumpSpeed = 0f;
+        }
+
         bool isRunning = false;
  
         // Press Left Shift to run

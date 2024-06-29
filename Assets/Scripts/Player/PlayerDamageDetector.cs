@@ -7,7 +7,7 @@ using FishNet.Object;
 public class PlayerDamageDetector : NetworkBehaviour
 {
 
-public float health = 100;
+static public float health = 100;
 public float maxHealth = 100;
 public float bulletDamage = 10;
 
