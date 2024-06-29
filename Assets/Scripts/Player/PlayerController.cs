@@ -71,7 +71,7 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
 
-        if(PlayerDamageDetector.health <= 0){
+        if(PlayerDamageDetector.health <= 0 && base.IsOwner){
             walkingSpeed = 0f;
             runningSpeed = 0f;
             jumpSpeed = 0f;
