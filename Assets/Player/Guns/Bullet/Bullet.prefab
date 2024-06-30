@@ -4882,10 +4882,10 @@ GameObject:
   - component: {fileID: 9034180174730385473}
   - component: {fileID: 1205947419503615876}
   - component: {fileID: 7407189892714905406}
-  - component: {fileID: 1187599796594240973}
   - component: {fileID: 8249938085660003081}
   - component: {fileID: 6070104974879123705}
   - component: {fileID: 919342613376774389}
+  - component: {fileID: 2970453713585635172}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -4960,19 +4960,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1187599796594240973
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2483930549874958819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.078681
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8249938085660003081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5036,6 +5023,19 @@ MonoBehaviour:
   bullet: {fileID: 2483930549874958819}
   hitGroundEffect: {fileID: 1869961067875886925}
   bulletHolePrefab: {fileID: 9209649899088742413, guid: 9abad2c0cd7d7e04e887e7b38e70a41e, type: 3}
+--- !u!65 &2970453713585635172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483930549874958819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3624039319053207191
 GameObject:
   m_ObjectHideFlags: 0
