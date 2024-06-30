@@ -21,14 +21,14 @@ public GameObject AlivePlayerBody;
     void OnTriggerEnter(Collider other)
     {
     //doing damage
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet" && base.IsOwner)
         {
         health = health - bulletDamage;
         print(health);
         HealthBarFiller();
 
         //being ded
-        if(health<=0){
+        if(health<=0 && base.IsOwner){
             print("ded");
             DethScreen.gameObject.SetActive (true);
             DeadBody.gameObject.SetActive (true);
