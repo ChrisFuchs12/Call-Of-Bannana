@@ -34,6 +34,7 @@ public GameObject AlivePlayerBody;
             DeadBody.gameObject.SetActive (true);
             AlivePlayerGun.gameObject.SetActive (false);
             AlivePlayerBody.gameObject.SetActive (false);
+            DiedServer();
         }
         else{
             DethScreen.gameObject.SetActive (false);
@@ -49,5 +50,18 @@ public GameObject AlivePlayerBody;
         healthBar.fillAmount = health / maxHealth;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    void DiedServer(){
+        DeadBody.gameObject.SetActive (true);
+        AlivePlayerGun.gameObject.SetActive (false);
+        AlivePlayerBody.gameObject.SetActive (false);
+        DiedObserver();
+    }
 
+    [ObserversRpc]
+    void DiedObserver(){
+        DeadBody.gameObject.SetActive (true);
+        AlivePlayerGun.gameObject.SetActive (false);
+        AlivePlayerBody.gameObject.SetActive (false);
+    }
 }
