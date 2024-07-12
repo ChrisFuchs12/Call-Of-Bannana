@@ -69,10 +69,4 @@ public class MainMenuManager : MonoBehaviour
         string[] scenesToClose = new string[] { "MainMenuSteam" };
         BootstrapNetworkManager.ChangeNetworkScene("Game", scenesToClose);
     }
-
-    public void LaunchPlayer()
-    {
-        PlayerActivator PlrAct = player.GetComponent<PlayerActivator>();
-        PlrAct.ActivatePlayer();  
-    }
 }
