@@ -9,7 +9,7 @@ public class PlayerActivator : NetworkBehaviour
     public GameObject playerEverything;
     
     public void ActivatePlayer(){
-       playerEverything.SetActive(true);
+       playerEverything.gameObject.SetActive(true);
        Debug.Log("Player Activated");
     }
 }
