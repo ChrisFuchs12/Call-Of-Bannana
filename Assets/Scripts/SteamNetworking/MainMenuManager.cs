@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
  
     [SerializeField] private TextMeshProUGUI lobbyTitle, lobbyIDText;
     [SerializeField] private Button startGameButton;
+    [SerializeField] private GameObject player;
     private void Awake() => instance = this;
  
     private void Start()
@@ -67,5 +68,11 @@ public class MainMenuManager : MonoBehaviour
     {
         string[] scenesToClose = new string[] { "MainMenuSteam" };
         BootstrapNetworkManager.ChangeNetworkScene("Game", scenesToClose);
+    }
+
+    public void LaunchPlayer()
+    {
+        PlayerActivator PlrAct = player.GetComponent<PlayerActivator>();
+        PlrAct.ActivatePlayer();  
     }
 }
