@@ -122,9 +122,7 @@ public class PlayerController : NetworkBehaviour
             dashTime = 0;
         }
 
-        while(shouldRemoveDash == true){
-            dashTime = dashTime - 1;
-        }
+       
  
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
