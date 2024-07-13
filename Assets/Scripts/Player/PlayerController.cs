@@ -30,6 +30,8 @@ public class PlayerController : NetworkBehaviour
     private float cameraYOffset = 0.4f;
     public Camera playerCamera;
     public GameObject camHolder;
+
+    public float dashTime = 100;
     
     private void Awake()
     {
@@ -106,6 +108,17 @@ public class PlayerController : NetworkBehaviour
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
+
+        if(Input.GetKeyDown("q") && dashTime <= 100){
+            runningSpeed = 50f;
+            dashTime = dashTime - 1;
+            Debug.Log(dashTime);
+        }if(dashTime <= 0){
+            runningSpeed = 20f;
+        }if(Input.GetKeyUp("q")){
+            runningSpeed = 20f;
+        }
+
  
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
