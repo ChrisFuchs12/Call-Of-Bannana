@@ -111,29 +111,22 @@ public class PlayerController : NetworkBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
  
         // Player and Camera rotation
+
+        float currentTorsoRotation = 0;
+
         if (canMove && playerCamera != null && base.IsOwner)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+
+            currentTorsoRotation = Mathf.Lerp(currentTorsoRotation, rotationX, Time.deltaTime * lookSpeed);
+
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, currentTorsoRotation, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-            ServerMoveCam();
+            
         }
 
     }
 
-    [ObserversRpc]
-    void ServerMoveCam()
-    {
-        camHolder.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        //ObserverMoveCam();
-    }
 
-    
-    
-    [ServerRpc(RequireOwnership = false)]
-    void ObserverMoveCam()
-   {
-        
-   }
 }
