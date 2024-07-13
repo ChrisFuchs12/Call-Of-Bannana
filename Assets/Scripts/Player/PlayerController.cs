@@ -32,6 +32,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject camHolder;
 
     public float dashTime = 100;
+    private bool shouldRemoveDash = false;
     
     private void Awake()
     {
@@ -111,14 +112,19 @@ public class PlayerController : NetworkBehaviour
 
         if(Input.GetKeyDown("q") && dashTime <= 100){
             runningSpeed = 50f;
-            dashTime = dashTime - 1;
+            shouldRemoveDash = true;
             Debug.Log(dashTime);
         }if(dashTime <= 0){
             runningSpeed = 20f;
+            shouldRemoveDash = false;
         }if(Input.GetKeyUp("q")){
             runningSpeed = 20f;
+            dashTime = 0;
         }
 
+        while(shouldRemoveDash == true){
+            dashTime = dashTime - 1;
+        }
  
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
