@@ -252,12 +252,23 @@ public class WeaponSwapping : NetworkBehaviour
 
 
     //poo poo knife
-    public IEnumerator EquipKnife(){
+    public IEnumerator EquipKnife()
+    {
+        if (isEquippingKnife) yield break; // Prevent re-entering if already equipping
+
         isEquippingKnife = true;
-        knifeAnim.SetBool("isEquipping",true);
-        yield return new WaitForSeconds(equipTime);
-        knifeAnim.SetBool("isEquipping",false);
+        knifeAnim.SetBool("isEquipping", true);
+
+        // Wait until the current animation finishes
+        while (knifeAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f ||
+               knifeAnim.IsInTransition(0))
+        {
+            yield return null;
+        }
+
+        knifeAnim.SetBool("isEquipping", false);
         isEquippingKnife = false;
     }
+
 
 }
