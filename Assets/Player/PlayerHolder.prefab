@@ -18478,7 +18478,6 @@ GameObject:
   - component: {fileID: 6247533573677064454}
   - component: {fileID: 8883564332608617593}
   - component: {fileID: 7757749447642118649}
-  - component: {fileID: 3482921411186591555}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Untagged
@@ -18522,7 +18521,6 @@ MonoBehaviour:
   - {fileID: 3306353022598600634}
   - {fileID: 9066661851200609905}
   - {fileID: 8883564332608617593}
-  - {fileID: 3482921411186591555}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField:
   - {fileID: 1395613634624782381}
@@ -18561,11 +18559,13 @@ MonoBehaviour:
   gravity: 20
   lookSpeed: 2
   lookXLimit: 60
+  networkCameraRotation: {x: 0, y: 0}
   canMove: 1
   amountOfJumps: 2
   cameraYOffset: 0.4
   playerCamera: {fileID: 2351453214553082672}
   camHolder: {fileID: 8492773836392632906}
+  dashTime: 100
 --- !u!114 &3306353022598600634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18816,22 +18816,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &3482921411186591555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3802414838888905609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a4b0821a872de43b341551abae6e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 4
-  _addedNetworkObject: {fileID: 3894994092055675078}
-  _networkObjectCache: {fileID: 3894994092055675078}
-  playerEverything: {fileID: 2248588139467860158}
 --- !u!1 &3924090694348983374
 GameObject:
   m_ObjectHideFlags: 0
