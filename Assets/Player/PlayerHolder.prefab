@@ -18581,7 +18581,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 4810592799683797647
+  <AssetPathHash>k__BackingField: 3696594439149230881
 --- !u!114 &2338491948054947762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18603,6 +18603,7 @@ MonoBehaviour:
   gravity: 20
   lookSpeed: 2
   lookXLimit: 60
+  networkCameraRotation: {x: 0, y: 0}
   canMove: 1
   amountOfJumps: 2
   cameraYOffset: 0.4
